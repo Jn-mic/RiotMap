@@ -1,16 +1,30 @@
 {%extends 'base.html'%}
 {%load static%}
 {%load bootstrap4%}
+{%load crispy_forms_tags%}
 {%block content%}
 {%include 'navbar.html'%}
 <div class="container mt-5">
 
 
     <!--Section: Content-->
+    
     <section class="dark-grey-text">
-  
+      <a class="btn btn" style="background-color: transparent; width: 300px; font-size: 30px; border-radius: 50px;" data-toggle="modal" data-target="#edit"><strong>CREATE YOUR POST</strong></a>
+
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md ">
+            <div class="modal-content">
+                <form action="" method="post" enctype="multipart/form-data" style="text-align: center; color: red;">
+                    {% csrf_token%}
+                    {{form|crispy}}
+                    <button type="submit" class="btn btn-primary btn-sm"> SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div> 
       <!-- Section heading -->
-      <h2 class="text-center font-weight-bold mb-4 pb-2">Recent Riot</h2>
+      <h2 class="text-center font-weight-bold mb-4 pb-2">CURRENTLY HAPPENING</h2>
       <!-- Section description -->
       <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
   
@@ -28,6 +42,7 @@
               <div class="mask rgba-white-slight"></div>
             </a>
           </div>
+          <br><br>
   
         </div>
         <!-- Grid column -->
@@ -41,20 +56,22 @@
           <!-- Excerpt -->
           <p class="dark-grey-text">{{post.description}}</p>
           <!-- Post data -->
-          <p>by <a class="font-weight-bold">{{user}}</a>{{post.pub_date|timesince}}</p>
+          <p>By: <a class="font-weight-bold">{{user}}</a><p>{{post.pub_date|timesince}}</p>
           <!-- Read more button -->
           <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
-  
+         
         </div>
+        
         {%endfor%}
         <!-- Grid column -->
-  
+   
       </div>
       <!-- Grid row -->
   
       <hr class="my-5">
-  
+     
     </section>
+    
     <!--Section: Content-->
   
   

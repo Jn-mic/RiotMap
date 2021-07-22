@@ -10,15 +10,14 @@
     <section class="dark-grey-text">
   
       <!-- Section heading -->
-      <h2 class="text-center font-weight-bold mb-4 pb-2">Recent Riot</h2>
+      <h2 class="text-center font-weight-bold mb-4 pb-2">POLICE STATIONS</h2>
       <!-- Section description -->
-      <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
   
         <!-- Grid row -->
       <div class="row align-items-center">
   
         <!-- Grid column -->
-        {%for post in posts%}
+        {%for police in polices%}
         <div class="col-lg-5 col-xl-4">
   
           <!-- Featured image -->
@@ -37,11 +36,11 @@
         <div class="col-lg-7 col-xl-8">
   
           <!-- Post title -->
-          <h4 class="font-weight-bold mb-3"><strong>{{post.name}}</strong></h4>
+          <h4 class="font-weight-bold mb-3"><strong>{{police.name}}</strong></h4>
           <!-- Excerpt -->
-          <p class="dark-grey-text">{{post.description}}</p>
+          <p class="dark-grey-text">{{police.city}}</p>
           <!-- Post data -->
-          <p>by <a class="font-weight-bold">{{user}}</a>{{post.pub_date|timesince}}</p>
+          <p>by <a class="font-weight-bold">{{police.address}}</a>{{post.pub_date|timesince}}</p>
           <!-- Read more button -->
           <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
   

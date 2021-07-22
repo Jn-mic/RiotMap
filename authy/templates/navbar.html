@@ -1,0 +1,59 @@
+{%load static%}
+{%load bootstrap4%}
+{%block styles%}
+    {%bootstrap_css%}
+<link href="{%static 'css/index.css'%}" type="text/css"  rel='stylesheet'>
+{%endblock%}
+
+<nav class="nav2 bg-success">
+   <a href="{%url 'home'%}"><h1 style="text-align: center; color: black;">RIOT MAP</h1></a>
+
+   <div class="login">
+    {%if user.is_authenticated%}
+    <p>
+      Hello,<span style="color:white; font-size: 30px">{{user}}</span>
+    </p>
+    <p>
+       <a href="{%url 'profile'%}"><button class="btn btn-danger"style="position: relative; top: 10px; height: 30px">VIEW YOUR PROFILE</button></a>
+       <a href="{%url 'logout'%}"><button class="btn btn-primary"style="position: relative; left:90px; top: 10px; height: 30px">LOGOUT</button></a>
+    </p>
+    {%else%}
+    <a href="{%url 'register'%}" style="position: relative; left: 40px">Register</a>
+    <a href="{%url 'login'%}" style="position: relative; left: 60px">Login</a>
+    {%endif%}
+  </div>
+
+   <div class="links" style="position: relative; left: 700px; font-size: 15px; ">
+    <a href="{%url 'post'%}" style=" position: relative;"><button class="btn btn"><p>POSTS</p></button></a>
+    <a href="{%url 'hotspot'%}" style="position: relative;background-color: transparent; "><button class="btn btn"><p>HOTSPOT AREAS</p></button></a>
+  
+
+    <div class="important">
+        <ul>
+            <li class="dropdown"  style="list-style-type: none;">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">MY IMPORTANT AREAS<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="{%url 'work'%}">Work</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="{%url 'hospital'%}">Hospital</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="{%url 'police'%}">Police Stations</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="{%url 'home'%}"><button class="btn btn-danger">Back Home</button></a>
+                  </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+
+ </div>
+  
+
+</nav>
