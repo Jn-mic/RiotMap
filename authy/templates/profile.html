@@ -17,6 +17,30 @@
     <img class="rounded-circle account-img" style="width: 150px; height: 100px;" class="img-responsive thumbnail " alt="img" src="{{user.profile_image.url}}">
     <p>BIO:{{user.bio}}</p>
     <p class="text-secondary">{{user.email}}</p>
+    <div class="important">
+        <ul>
+            <li class="dropdown"  style="list-style-type: none;">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">MY IMPORTANT AREAS<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="{%url 'work'%}">Work</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="{%url 'hospital'%}">Hospital</a>
+                </li>
+                <hr>
+                <li>
+                  <a href="{%url 'police'%}">Police Stations</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="{%url 'home'%}"><button class="btn btn-danger">Back Home</button></a>
+                  </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
 
     <a class="btn btn" data-toggle="modal" data-target="#edit"><strong>Edit Profile</strong></a>
 
