@@ -1,0 +1,17 @@
+.links{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    padding: 10px;
+    position: relative;
+    bottom: 40px;
+   
+}
+.dropdown-menu{
+    text-align: center;
+}
+
+.section{
+    text-align: center;
+    background-color: red;
+}
