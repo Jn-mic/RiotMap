@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'home',
     'authy',
     'crispy_forms',
-    'django_google_maps',
     'bootstrap4',
 ]
 
@@ -88,8 +87,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'riot',
-        'USER': 'lorraine',
-    'PASSWORD':'1234',
+        'USER': 'moringa',
+    'PASSWORD':'Access',
     }
 }
 

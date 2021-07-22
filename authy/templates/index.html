@@ -1,0 +1,65 @@
+
+{%extends 'base.html'%}
+{%load static%}
+{%load bootstrap4%}
+{%block content%}
+{%include 'navbar.html'%}
+<div class="container mt-5">
+
+
+    <!--Section: Content-->
+    <section class="dark-grey-text">
+  
+      <!-- Section heading -->
+      <h2 class="text-center font-weight-bold mb-4 pb-2">HOTSPOT AREAS</h2>
+      <!-- Section description -->
+  
+        <!-- Grid row -->
+      <div class="row align-items-center">
+  
+        <!-- Grid column -->
+        {%for hotspot in hotspots%}
+        <div class="col-lg-5 col-xl-4">
+  
+          <!-- Featured image -->
+          <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+            <img class="img-fluid" src="{{hotspot.image.url}}" alt="Sample image">
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <br><br><br>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+       
+        <div class="col-lg-7 col-xl-8">
+  
+          <!-- Post title -->
+          <h4 class="font-weight-bold mb-3"><strong>{{hotspot.name}}</strong></h4>
+          <!-- Excerpt -->
+          <p class="dark-grey-text">{{hotspot.location}}</p>
+          <!-- Post data -->
+          <p>by <a class="font-weight-bold">{{hotspot.city}}</a>{{post.pub_date|timesince}}</p>
+          <!-- Read more button -->
+          <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
+  
+        </div>
+    
+        {%endfor%}
+        <!-- Grid column -->
+      
+      </div>
+   
+      <!-- Grid row -->
+  
+      <hr class="my-5">
+  
+    </section>
+    <!--Section: Content-->
+  
+  
+  </div>
+{%endblock%}
