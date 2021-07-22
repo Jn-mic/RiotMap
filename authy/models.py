@@ -8,6 +8,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.http import Http404
 import datetime as dt
+import geocoder
 #from django_google_maps import fields as map_fields
 
 
@@ -130,8 +131,8 @@ class Hotspot(models.Model):
 
     @classmethod
     def search_hotspot(cls,search_term):
-       hotspot=cls.objects.filter(hotspot_name__icontain=search_term)
-       return hotspot
+        hotspot=cls.objects.filter(hotspot_name__icontain=search_term)
+        return hotspot
 
     def __str__(self):
         return self.name
@@ -165,8 +166,22 @@ class Police(models.Model):
 
 
     
+class Data(models.Model):
+    country=models.CharField(max_length=100, null=True)
+    town=models.CharField(max_length=100,null=True)
+    location=models.PositiveBigIntegerField(null=True)
+    latitude=models.FloatField(default=0)
+    longitude=models.FloatField(default=0)
 
-   
+    def __str__(self):
+            return self.country
+    
+    class meta:
+
+        def save(self, *arg, **kwargs):
+            self.latitude=geocoder.osm(self.country).lat
+            self.longitude=geocoder.osm(self.country).lng
+            return super().save(*arg, **kwargs)
 
 
 

@@ -7,11 +7,16 @@ from django.contrib.auth.decorators import login_required
 from .models import Post
 import datetime as dt
 from .forms import *
+import folium
+import geocoder
+from folium import plugins
+from .models import *
+
 
 # Create your views here.
 def register(request):
     if request.user.is_authenticated:
-       return redirect('home')
+        return redirect('home')
     else:
         form = CreateUserForm()
         if request.method == 'POST':
@@ -171,10 +176,26 @@ def police (request):
 
     else:
         form=PoliceForm()
-       
     context={
         'polices':polices,
         'form':form
     }
 
     return render(request,'police.html',context)
+
+def index(request):
+    data = Data.objects.all()
+    data_list=Data.objects.values_list('longitude','latitude','town','country')
+    map1=folium.map(location=[19,-12],zoom_start=2)
+
+    plugins.Heatmap(data_list).add_to(map1)
+    plugins.Fullscreen().add_to(map1)
+    map1= map1_repr_html_()
+    
+    contex={
+        "map1":map1
+
+    }
+
+    data_list=Data.objects.values_list('longitude','latitude','town','county')
+
