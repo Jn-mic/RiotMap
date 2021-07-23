@@ -15,10 +15,11 @@
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md ">
             <div class="modal-content">
-                <form action="" method="post" enctype="multipart/form-data" style="text-align: center; color: red;">
+                <form action="" method="POST" enctype="multipart/form-data" style="text-align: center; color: red;width: 350px;position: relative; left: 80px;">
                     {% csrf_token%}
                     {{form|crispy}}
-                    <button type="submit" class="btn btn-primary btn-sm"> SUBMIT</button>
+                    <br>
+                   <button type="submit" class="btn btn-primary btn-sm"> SUBMIT</button>
                 </form>
             </div>
         </div>
@@ -58,7 +59,7 @@
           <!-- Post data -->
           <p>By: <a class="font-weight-bold">{{user}}</a><p>{{post.pub_date|timesince}}</p>
           <!-- Read more button -->
-          <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
+         
          
         </div>
         

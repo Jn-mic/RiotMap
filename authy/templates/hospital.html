@@ -1,6 +1,7 @@
 {%extends 'base.html'%}
 {%load static%}
 {%load bootstrap4%}
+{%load crispy_forms_tags%}
 {%block content%}
 {%include 'navbar.html'%}
 <div class="container mt-5">
@@ -13,9 +14,22 @@
       <!-- Section heading -->
       <h2 class="text-center font-weight-bold mb-4 pb-2">HOSPITAL</h2>
       <!-- Section description -->
-  
+      <a class="btn btn" style="background-color: transparent; width: 300px; font-size: 30px; border-radius: 50px; position: relative; left: 700px;" data-toggle="modal" data-target="#edit"><strong>SET YOUR NEAREST HOSPITAL</strong></a>
+
+      <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md ">
+              <div class="modal-content">
+                <form action="" method="post" enctype="multipart/form-data" style="text-align: center; color: red;width: 350px;position: relative; left: 80px;">
+                      {% csrf_token%}
+                      {{form|crispy}}
+                      <button type="submit" class="btn btn-primary btn-sm"> SUBMIT</button>
+                  </form>
+              </div>
+          </div>
+      </div> 
         <!-- Grid row -->
       <div class="row align-items-center">
+        
   
         <!-- Grid column -->
         {%for hospital in hospitals%}
@@ -23,7 +37,7 @@
   
           <!-- Featured image -->
           <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-            <img class="img-fluid" src="{{post.image.url}}" alt="Sample image">
+            <img class="img-fluid" src="{{hospital.image.url}}" alt="Sample image">
             <a>
               <div class="mask rgba-white-slight"></div>
             </a>
