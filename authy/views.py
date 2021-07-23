@@ -60,28 +60,24 @@ def home(request):
 
 @login_required(login_url='login')
 def today_riot(request):
-    date=dt.date.today()
-    posts=Post.today_riot()
+    posts=Post.objects.all()
+    form=PostForm()
 
     if request.method=='POST':
         form=PostForm(request.POST,instance=request.user)
-       
-        if form.is_valid() :
+
+        if form.is_valid():
             form.save()
-            
         return redirect('post')
 
     else:
         form=PostForm()
-      
-    ctx={
-        
-        'form':form,
-        'posts':posts
+       
+    context={
+        'posts':posts,
+        'form':form
     }
-   
-
-    return render(request,'post.html',{'date':date,'posts':posts,'PostForm':form})
+    return render(request,'post.html',context)
 
 @login_required(login_url='login')
 def hotspot(request):
